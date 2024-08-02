@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livestock Video Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Livestock Video Analyzer</h1>
+        <input type="file" id="videoInput" accept="video/*">
+        <button id="analyzeButton">Analyze Video</button>
+        <div id="result" class="result">
+            <p id="status">Upload a video to start analysis</p>
+            <p id="analysisResult"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('analyzeButton').addEventListener('click', async () => {
+            const videoInput = document.getElementById('videoInput');
+            const resultElement = document.getElementById('analysisResult');
+            const statusElement = document.getElementById('status');
+            
+            if (!videoInput.files.length) {
+                statusElement.textContent = 'Please upload a video first.';
+                return;
+            }
+
+            const videoFile = videoInput.files[0];
+            const formData = new FormData();
+            formData.append('video', videoFile);
+
+            try {
+                statusElement.textContent = 'Analyzing video...';
+
+                // Replace 'your-backend-endpoint' with the actual URL of your video analysis service
+                const response = await fetch('your-backend-endpoint', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const result = await response.json();
+                statusElement.textContent = 'Analysis Complete';
+                resultElement.textContent = `Analysis Result: ${result.message}`;
+            } catch (error) {
+                statusElement.textContent = 'Error during analysis';
+                resultElement.textContent = error.message;
+            }
+        });
+    </script>
+</body>
+</html>
