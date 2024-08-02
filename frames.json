@@ -25,7 +25,7 @@
     {"filename": "data/unhealthy/bovine-mastitis.jpeg", "label": "bovine mastitis"},
     {"filename": "data/unhealthy/cancer-eye.jpeg", "label": "cancer eye"},
     {"filename": "data/unhealthy/cancer-eye1.jpeg", "label": "cancer eye"},
-    {"filename": "data/unhealthy/cancer-eye.2jpeg", "label": "cancer eye"},
+    {"filename": "data/unhealthy/cancer-eye2.jpeg", "label": "cancer eye"},
     {"filename": "data/unhealthy/johnes-disease.jpeg", "label": "johnes disease"},
     {"filename": "data/unhealthy/johnes-disease1.jpeg", "label": "johnes disease"},
     {"filename": "data/unhealthy/ketosis.jpeg", "label": "ketosis"},
