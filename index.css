@@ -1,0 +1,112 @@
+/* index.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+header.hero {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Hide overflow to ensure the video does not extend beyond the header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the header area */
+    z-index: -1; /* Place the video behind the content */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1; /* Ensure content is above the video */
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 4rem; /* Make the heading larger */
+    margin: 0 0 20px;
+    line-height: 1.2; /* Improve readability */
+}
+
+.hero-content p {
+    font-size: 1.75rem; /* Make the paragraph text larger */
+    margin: 0 0 20px;
+    line-height: 1.5; /* Improve readability */
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px; /* Increase padding for a bigger button */
+    font-size: 1.25rem; /* Increase font size of the button */
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+/* Styles for the features section */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    gap: 20px; /* Space between cards */
+}
+
+.feature {
+    background-color: #fff;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for 3D effect */
+    max-width: 300px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.feature:hover {
+    transform: translateY(-10px); /* Lift card effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.feature h2 {
+    font-size: 1.5rem; /* Adjust font size */
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.feature p {
+    font-size: 1rem; /* Adjust font size */
+    color: #666;
+}
+
+/* Styles for the footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 1rem;
+}
