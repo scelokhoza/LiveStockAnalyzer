@@ -129,6 +129,7 @@ class LiveStockModel:
         val_loss, val_accuracy = self.model.evaluate(X_val, y_val)
         print(f'Validation accuracy: {val_accuracy:.2f}')
 
+
 if __name__ == "__main__":
     model = LiveStockModel('frames.json')
     (X_train, X_val, y_train, y_val) = model.test_training()

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livestock Video Analyzer - Home</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}"> 
     <style>
         body {
             margin: 0;
@@ -91,13 +91,13 @@
 
     <header class="hero">
         <video autoplay muted loop class="background-video">
-            <source src="./assets/y2mate.com - Cows Eating Grass ASMR  Organic Valley_v720P.mp4" type="video/mp4">
+            <source src="{{ url_for('static', filename='assets/y2mate.com - Cows Eating Grass ASMR  Organic Valley_v720P.mp4') }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="hero-content">
             <h1>Welcome to Livestock Video Analyzer</h1>
             <p>Your solution for detecting the health of livestock from video analysis.</p>
-            <a href="./upload.html" class="cta-button">Get Started</a>
+            <a href="{{ url_for('upload') }}" class="cta-button">Get Started</a>
         </div>
     </header>
 

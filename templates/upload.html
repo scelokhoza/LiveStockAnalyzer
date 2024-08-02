@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livestock Video Analyzer</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,10 +12,10 @@
             padding: 0;
             background: url('sunny-meadow-landscape.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #fff; /* Default text color for better readability */
+            color: #fff;
         }
         .navbar {
-            background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent navbar */
+            background-color: rgba(51, 51, 51, 0.8);
             overflow: hidden;
             position: fixed;
             top: 0;
@@ -38,12 +38,12 @@
         .container {
             padding: 20px;
             max-width: 600px;
-            margin: 80px auto 20px; /* Adjusted margin to account for navbar height */
-            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            margin: 80px auto 20px;
+            background-color: rgba(255, 255, 255, 0.9);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             text-align: center;
-            color: #333; /* Ensure text in container is dark */
+            color: #333;
         }
         h1 {
             color: #333;
@@ -82,9 +82,11 @@
         <h1>Livestock Video Analyzer</h1>
         <input type="file" id="videoInput" accept="video/*">
         <button id="analyzeButton">Analyze Video</button>
+        <button id="defaultButton">Use Default Video</button>
         <div id="result" class="result">
             <p id="status">Upload a video to start analysis</p>
             <p id="analysisResult"></p>
+            <video id="videoPlayer" controls style="display:none; width: 100%; margin-top: 20px;"></video>
         </div>
     </div>
 
@@ -93,7 +95,8 @@
             const videoInput = document.getElementById('videoInput');
             const resultElement = document.getElementById('analysisResult');
             const statusElement = document.getElementById('status');
-            
+            const videoPlayer = document.getElementById('videoPlayer');
+
             if (!videoInput.files.length) {
                 statusElement.textContent = 'Please upload a video first.';
                 return;
@@ -106,8 +109,7 @@
             try {
                 statusElement.textContent = 'Analyzing video...';
 
-                // Replace 'your-backend-endpoint' with the actual URL of your video analysis service
-                const response = await fetch('your-backend-endpoint', {
+                const response = await fetch('/analyze', {
                     method: 'POST',
                     body: formData
                 });
@@ -119,10 +121,20 @@
                 const result = await response.json();
                 statusElement.textContent = 'Analysis Complete';
                 resultElement.textContent = `Analysis Result: ${result.message}`;
+
+                // Show the uploaded video
+                videoPlayer.src = URL.createObjectURL(videoFile);
+                videoPlayer.style.display = 'block';
             } catch (error) {
                 statusElement.textContent = 'Error during analysis';
                 resultElement.textContent = error.message;
             }
+        });
+
+        document.getElementById('defaultButton').addEventListener('click', () => {
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.src = '/default_video';
+            videoPlayer.style.display = 'block';
         });
     </script>
 </body>
