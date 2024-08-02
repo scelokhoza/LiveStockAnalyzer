@@ -85,6 +85,6 @@ class AnalyzeLiveStock:
     
 
 if __name__ == '__main__':
-    analysis = AnalyzeLiveStock('cow_health_model.keras', 'sickcow.mp4')
+    analysis = AnalyzeLiveStock('cow_health_model.keras', 'assets/videos/sickcow.mp4')
     predictions = analysis.analyze_video()
     print(predictions)
